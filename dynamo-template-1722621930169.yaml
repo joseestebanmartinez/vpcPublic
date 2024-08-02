@@ -1,0 +1,221 @@
+---
+Metadata:
+  TemplateId: "arn:aws:cloudformation:us-east-1:577545409321:generatedTemplate/cff2c7ff-7113-42ff-abca-5cf9dc4b3686"
+Resources:
+  CloudWatchAlarm00TargetTrackingtabledemopruebaProvisionedCapacityHigh6d1a6a80a57748c5a4f66cbedd003df5009dJ7Z:
+    UpdateReplacePolicy: "Retain"
+    Type: "AWS::CloudWatch::Alarm"
+    DeletionPolicy: "Retain"
+    Properties:
+      ComparisonOperator: "GreaterThanThreshold"
+      Dimensions:
+      - Value:
+          Ref: "DynamoDBTable00demoprueba00Y96cX"
+        Name: "TableName"
+      Period: 300
+      EvaluationPeriods: 3
+      Namespace: "AWS/DynamoDB"
+      OKActions: []
+      AlarmActions:
+      - "arn:aws:autoscaling:us-east-1:577545409321:scalingPolicy:4976b290-f13c-40a9-8c4c-62c3ec369969:resource/dynamodb/table/demo-prueba:policyName/$demo-prueba-scaling-policy:createdBy/9e33c919-5c60-4a39-aafc-ff5899362470"
+      MetricName: "ProvisionedWriteCapacityUnits"
+      ActionsEnabled: true
+      AlarmDescription: "DO NOT EDIT OR DELETE. For TargetTrackingScaling policy arn:aws:autoscaling:us-east-1:577545409321:scalingPolicy:4976b290-f13c-40a9-8c4c-62c3ec369969:resource/dynamodb/table/demo-prueba:policyName/$demo-prueba-scaling-policy:createdBy/9e33c919-5c60-4a39-aafc-ff5899362470."
+      AlarmName: "TargetTracking-table/demo-prueba-ProvisionedCapacityHigh-6d1a6a80-a577-48c5-a4f6-6cbedd003df5"
+      Statistic: "Average"
+      InsufficientDataActions: []
+      Threshold: 1
+  CloudWatchAlarm00TargetTrackingtabledemopruebaAlarmLow547cb109260747deb52ca1441b88fe5e0083NfS:
+    UpdateReplacePolicy: "Retain"
+    Type: "AWS::CloudWatch::Alarm"
+    DeletionPolicy: "Retain"
+    Properties:
+      ComparisonOperator: "LessThanThreshold"
+      Dimensions:
+      - Value:
+          Ref: "DynamoDBTable00demoprueba00Y96cX"
+        Name: "TableName"
+      Period: 60
+      EvaluationPeriods: 15
+      Namespace: "AWS/DynamoDB"
+      OKActions: []
+      AlarmActions:
+      - "arn:aws:autoscaling:us-east-1:577545409321:scalingPolicy:6689e351-a6fb-44dd-a2c1-5331862bbfa8:resource/dynamodb/table/demo-prueba:policyName/$demo-prueba-scaling-policy:createdBy/b82566c0-2b54-4b7b-a907-7c3f761f98b0"
+      MetricName: "ConsumedReadCapacityUnits"
+      ActionsEnabled: true
+      AlarmDescription: "DO NOT EDIT OR DELETE. For TargetTrackingScaling policy arn:aws:autoscaling:us-east-1:577545409321:scalingPolicy:6689e351-a6fb-44dd-a2c1-5331862bbfa8:resource/dynamodb/table/demo-prueba:policyName/$demo-prueba-scaling-policy:createdBy/b82566c0-2b54-4b7b-a907-7c3f761f98b0."
+      AlarmName: "TargetTracking-table/demo-prueba-AlarmLow-547cb109-2607-47de-b52c-a1441b88fe5e"
+      Statistic: "Sum"
+      InsufficientDataActions: []
+      Threshold: 30
+  DynamoDBTable00demoprueba00Y96cX:
+    UpdateReplacePolicy: "Retain"
+    Type: "AWS::DynamoDB::Table"
+    DeletionPolicy: "Retain"
+    Properties:
+      SSESpecification:
+        SSEEnabled: false
+      TableName: "demo-prueba"
+      AttributeDefinitions:
+      - AttributeType: "N"
+        AttributeName: "Id"
+      - AttributeType: "S"
+        AttributeName: "nombre"
+      ContributorInsightsSpecification:
+        Enabled: false
+      BillingMode: "PROVISIONED"
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: false
+      ProvisionedThroughput:
+        WriteCapacityUnits: 1
+        ReadCapacityUnits: 1
+      KeySchema:
+      - KeyType: "HASH"
+        AttributeName: "Id"
+      - KeyType: "RANGE"
+        AttributeName: "nombre"
+      DeletionProtectionEnabled: false
+      TableClass: "STANDARD"
+      Tags:
+      - Value: "personal"
+        Key: "name"
+      TimeToLiveSpecification:
+        Enabled: false
+  CloudWatchAlarm00TargetTrackingtabledemopruebaAlarmLowa96822e9f45745b1b622196bb5a07c88007QUSO:
+    UpdateReplacePolicy: "Retain"
+    Type: "AWS::CloudWatch::Alarm"
+    DeletionPolicy: "Retain"
+    Properties:
+      ComparisonOperator: "LessThanThreshold"
+      Dimensions:
+      - Value:
+          Ref: "DynamoDBTable00demoprueba00Y96cX"
+        Name: "TableName"
+      Period: 60
+      EvaluationPeriods: 15
+      Namespace: "AWS/DynamoDB"
+      OKActions: []
+      AlarmActions:
+      - "arn:aws:autoscaling:us-east-1:577545409321:scalingPolicy:4976b290-f13c-40a9-8c4c-62c3ec369969:resource/dynamodb/table/demo-prueba:policyName/$demo-prueba-scaling-policy:createdBy/9e33c919-5c60-4a39-aafc-ff5899362470"
+      MetricName: "ConsumedWriteCapacityUnits"
+      ActionsEnabled: true
+      AlarmDescription: "DO NOT EDIT OR DELETE. For TargetTrackingScaling policy arn:aws:autoscaling:us-east-1:577545409321:scalingPolicy:4976b290-f13c-40a9-8c4c-62c3ec369969:resource/dynamodb/table/demo-prueba:policyName/$demo-prueba-scaling-policy:createdBy/9e33c919-5c60-4a39-aafc-ff5899362470."
+      AlarmName: "TargetTracking-table/demo-prueba-AlarmLow-a96822e9-f457-45b1-b622-196bb5a07c88"
+      Statistic: "Sum"
+      InsufficientDataActions: []
+      Threshold: 30
+  CloudWatchAlarm00TargetTrackingtabledemopruebaProvisionedCapacityLow3cea48c0f05e4b51970746e33df72bbd00XVTfU:
+    UpdateReplacePolicy: "Retain"
+    Type: "AWS::CloudWatch::Alarm"
+    DeletionPolicy: "Retain"
+    Properties:
+      ComparisonOperator: "LessThanThreshold"
+      Dimensions:
+      - Value:
+          Ref: "DynamoDBTable00demoprueba00Y96cX"
+        Name: "TableName"
+      Period: 300
+      EvaluationPeriods: 3
+      Namespace: "AWS/DynamoDB"
+      OKActions: []
+      AlarmActions:
+      - "arn:aws:autoscaling:us-east-1:577545409321:scalingPolicy:4976b290-f13c-40a9-8c4c-62c3ec369969:resource/dynamodb/table/demo-prueba:policyName/$demo-prueba-scaling-policy:createdBy/9e33c919-5c60-4a39-aafc-ff5899362470"
+      MetricName: "ProvisionedWriteCapacityUnits"
+      ActionsEnabled: true
+      AlarmDescription: "DO NOT EDIT OR DELETE. For TargetTrackingScaling policy arn:aws:autoscaling:us-east-1:577545409321:scalingPolicy:4976b290-f13c-40a9-8c4c-62c3ec369969:resource/dynamodb/table/demo-prueba:policyName/$demo-prueba-scaling-policy:createdBy/9e33c919-5c60-4a39-aafc-ff5899362470."
+      AlarmName: "TargetTracking-table/demo-prueba-ProvisionedCapacityLow-3cea48c0-f05e-4b51-9707-46e33df72bbd"
+      Statistic: "Average"
+      InsufficientDataActions: []
+      Threshold: 1
+  CloudWatchAlarm00TargetTrackingtabledemopruebaAlarmHigh3db5c60d0dfe4cabbf87806620d1f23d00jvL0x:
+    UpdateReplacePolicy: "Retain"
+    Type: "AWS::CloudWatch::Alarm"
+    DeletionPolicy: "Retain"
+    Properties:
+      ComparisonOperator: "GreaterThanThreshold"
+      Dimensions:
+      - Value:
+          Ref: "DynamoDBTable00demoprueba00Y96cX"
+        Name: "TableName"
+      Period: 60
+      EvaluationPeriods: 2
+      Namespace: "AWS/DynamoDB"
+      OKActions: []
+      AlarmActions:
+      - "arn:aws:autoscaling:us-east-1:577545409321:scalingPolicy:6689e351-a6fb-44dd-a2c1-5331862bbfa8:resource/dynamodb/table/demo-prueba:policyName/$demo-prueba-scaling-policy:createdBy/b82566c0-2b54-4b7b-a907-7c3f761f98b0"
+      MetricName: "ConsumedReadCapacityUnits"
+      ActionsEnabled: true
+      AlarmDescription: "DO NOT EDIT OR DELETE. For TargetTrackingScaling policy arn:aws:autoscaling:us-east-1:577545409321:scalingPolicy:6689e351-a6fb-44dd-a2c1-5331862bbfa8:resource/dynamodb/table/demo-prueba:policyName/$demo-prueba-scaling-policy:createdBy/b82566c0-2b54-4b7b-a907-7c3f761f98b0."
+      AlarmName: "TargetTracking-table/demo-prueba-AlarmHigh-3db5c60d-0dfe-4cab-bf87-806620d1f23d"
+      Statistic: "Sum"
+      InsufficientDataActions: []
+      Threshold: 42
+  CloudWatchAlarm00TargetTrackingtabledemopruebaProvisionedCapacityHighedcf0cce3d3446e8bf792d1f1faf4fc700k5WVT:
+    UpdateReplacePolicy: "Retain"
+    Type: "AWS::CloudWatch::Alarm"
+    DeletionPolicy: "Retain"
+    Properties:
+      ComparisonOperator: "GreaterThanThreshold"
+      Dimensions:
+      - Value:
+          Ref: "DynamoDBTable00demoprueba00Y96cX"
+        Name: "TableName"
+      Period: 300
+      EvaluationPeriods: 3
+      Namespace: "AWS/DynamoDB"
+      OKActions: []
+      AlarmActions:
+      - "arn:aws:autoscaling:us-east-1:577545409321:scalingPolicy:6689e351-a6fb-44dd-a2c1-5331862bbfa8:resource/dynamodb/table/demo-prueba:policyName/$demo-prueba-scaling-policy:createdBy/b82566c0-2b54-4b7b-a907-7c3f761f98b0"
+      MetricName: "ProvisionedReadCapacityUnits"
+      ActionsEnabled: true
+      AlarmDescription: "DO NOT EDIT OR DELETE. For TargetTrackingScaling policy arn:aws:autoscaling:us-east-1:577545409321:scalingPolicy:6689e351-a6fb-44dd-a2c1-5331862bbfa8:resource/dynamodb/table/demo-prueba:policyName/$demo-prueba-scaling-policy:createdBy/b82566c0-2b54-4b7b-a907-7c3f761f98b0."
+      AlarmName: "TargetTracking-table/demo-prueba-ProvisionedCapacityHigh-edcf0cce-3d34-46e8-bf79-2d1f1faf4fc7"
+      Statistic: "Average"
+      InsufficientDataActions: []
+      Threshold: 1
+  CloudWatchAlarm00TargetTrackingtabledemopruebaAlarmHigh237402293ed1490ab3c24d3a2d1a5cb300LTazv:
+    UpdateReplacePolicy: "Retain"
+    Type: "AWS::CloudWatch::Alarm"
+    DeletionPolicy: "Retain"
+    Properties:
+      ComparisonOperator: "GreaterThanThreshold"
+      Dimensions:
+      - Value:
+          Ref: "DynamoDBTable00demoprueba00Y96cX"
+        Name: "TableName"
+      Period: 60
+      EvaluationPeriods: 2
+      Namespace: "AWS/DynamoDB"
+      OKActions: []
+      AlarmActions:
+      - "arn:aws:autoscaling:us-east-1:577545409321:scalingPolicy:4976b290-f13c-40a9-8c4c-62c3ec369969:resource/dynamodb/table/demo-prueba:policyName/$demo-prueba-scaling-policy:createdBy/9e33c919-5c60-4a39-aafc-ff5899362470"
+      MetricName: "ConsumedWriteCapacityUnits"
+      ActionsEnabled: true
+      AlarmDescription: "DO NOT EDIT OR DELETE. For TargetTrackingScaling policy arn:aws:autoscaling:us-east-1:577545409321:scalingPolicy:4976b290-f13c-40a9-8c4c-62c3ec369969:resource/dynamodb/table/demo-prueba:policyName/$demo-prueba-scaling-policy:createdBy/9e33c919-5c60-4a39-aafc-ff5899362470."
+      AlarmName: "TargetTracking-table/demo-prueba-AlarmHigh-23740229-3ed1-490a-b3c2-4d3a2d1a5cb3"
+      Statistic: "Sum"
+      InsufficientDataActions: []
+      Threshold: 42
+  CloudWatchAlarm00TargetTrackingtabledemopruebaProvisionedCapacityLow7da315f83bc44163af9c32d73888985900KorCQ:
+    UpdateReplacePolicy: "Retain"
+    Type: "AWS::CloudWatch::Alarm"
+    DeletionPolicy: "Retain"
+    Properties:
+      ComparisonOperator: "LessThanThreshold"
+      Dimensions:
+      - Value:
+          Ref: "DynamoDBTable00demoprueba00Y96cX"
+        Name: "TableName"
+      Period: 300
+      EvaluationPeriods: 3
+      Namespace: "AWS/DynamoDB"
+      OKActions: []
+      AlarmActions:
+      - "arn:aws:autoscaling:us-east-1:577545409321:scalingPolicy:6689e351-a6fb-44dd-a2c1-5331862bbfa8:resource/dynamodb/table/demo-prueba:policyName/$demo-prueba-scaling-policy:createdBy/b82566c0-2b54-4b7b-a907-7c3f761f98b0"
+      MetricName: "ProvisionedReadCapacityUnits"
+      ActionsEnabled: true
+      AlarmDescription: "DO NOT EDIT OR DELETE. For TargetTrackingScaling policy arn:aws:autoscaling:us-east-1:577545409321:scalingPolicy:6689e351-a6fb-44dd-a2c1-5331862bbfa8:resource/dynamodb/table/demo-prueba:policyName/$demo-prueba-scaling-policy:createdBy/b82566c0-2b54-4b7b-a907-7c3f761f98b0."
+      AlarmName: "TargetTracking-table/demo-prueba-ProvisionedCapacityLow-7da315f8-3bc4-4163-af9c-32d738889859"
+      Statistic: "Average"
+      InsufficientDataActions: []
+      Threshold: 1
